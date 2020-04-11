@@ -1,5 +1,3 @@
-package mergesort;
-
 import java.util.Comparator;
 
 /**

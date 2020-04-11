@@ -1,5 +1,3 @@
-package mergesort;
-
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.Random;
@@ -45,16 +43,16 @@ public class Main {
                 System.out.printf("%d Threads:\n", i);
             }
 
-            for (int j = 0, k = size; j < rounds; ++j, k*=2) {
+            for (int j = 0, k = size; j < rounds; ++j, k*=5) {
                 a = createRandomArray(k);
 //                System.out.println(Arrays.toString(a));
                 // run the algorithm and time how long it takes to sort the elements
                 long startTime = System.currentTimeMillis();
-                ParallelMergeSort.sort(a, comp, availableThreads);
+                ParallelMergeSort.sort(a, comp, i);
                 long endTime = System.currentTimeMillis();
 
                 if (!isSorted(a, comp)) {
-                    throw new RuntimeException("not sorted afterward: " + Arrays.toString(a));
+                    throw new RuntimeException("Not sorted afterward: " + Arrays.toString(a));
                 }
 
                 System.out.printf("%10d elements  =>  %6d ms \n", k, endTime - startTime);
