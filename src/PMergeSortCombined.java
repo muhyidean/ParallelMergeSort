@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.concurrent.CountDownLatch;
 
 public class PMergeSortCombined {
-    static int val = 10000;  // Place the number of values here
+    static int val = 100000000;  // Place the number of values here
 
         // Defining Main Arrays
         static int[] arr_test = new int[val];
