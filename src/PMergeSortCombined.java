@@ -1,23 +1,38 @@
+import java.io.FileNotFoundException;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.CountDownLatch;
 
 public class PMergeSortCombined {
-    static int val = 5000000;  // Place the number of values here
-    // Defining Main Arrays
-    static int[] arr_test = new int[val];
-    static int[] arr_test2 = new int[val];
-    static int[] arr_test4 = new int[val];
-    static int[] arr_test8 = new int[val];
+    static int val = 10000;  // Place the number of values here
 
-    // Defining Sub Arrays
-    static int[] arr1, arr2 = new int[val / 2];
-    static int[] arr41, arr42, arr43, arr44 = new int[val / 4];
-    static int[] arr81, arr82, arr83, arr84, arr85, arr86, arr87, arr88 = new int[val / 8];
+        // Defining Main Arrays
+        static int[] arr_test = new int[val];
+        static int[] arr_test2 = new int[val];
+        static int[] arr_test4 = new int[val];
+        static int[] arr_test8 = new int[val];
+
+        // Defining Sub Arrays
+        static int[] arr1, arr2 = new int[val / 2];
+        static int[] arr41, arr42, arr43, arr44 = new int[val / 4];
+        static int[] arr81, arr82, arr83, arr84, arr85, arr86, arr87, arr88 = new int[val / 8];
+
 
     public static void main(String[] args) throws IOException, InterruptedException {
+
+            // Test partion caption
+            try { PrintWriter outputfile = new PrintWriter(new FileWriter("./pmergeresult.txt", true));
+                outputfile.println("Test value: " + val);
+                outputfile.close(); } catch (FileNotFoundException e) { e.printStackTrace(); }
+
+            for (int sl =0; sl < 10; sl++) {
+
+
+
 
         // 8 threads
         //Latch
@@ -167,7 +182,7 @@ public class PMergeSortCombined {
 
         int mid = arr_test8.length / 2;
 
-        long start8 = System.currentTimeMillis(); // Get Time
+
 
         arr81 = Arrays.copyOfRange(arr_test8, 0, (mid / 4));
         arr82 = Arrays.copyOfRange(arr_test8, (mid / 4), (mid / 2));
@@ -178,6 +193,7 @@ public class PMergeSortCombined {
         arr87 = Arrays.copyOfRange(arr_test8, val - (mid / 2), val - (mid / 4));
         arr88 = Arrays.copyOfRange(arr_test8, val - (mid / 4), val);
 
+        long start8 = System.currentTimeMillis(); // Get Time
         List<Thread> threads = new ArrayList<>();
 
         t81.start();
@@ -233,8 +249,8 @@ public class PMergeSortCombined {
         }
 
         long end8 = System.currentTimeMillis();
-        System.out.println("8 thread run time: " + (end8 - start8));
-
+        long elapsed8 = end8 - start8;
+        System.out.println("8 thread run time: " + (elapsed8));
 
         // 4 threads
 
@@ -313,7 +329,7 @@ public class PMergeSortCombined {
 
         mid = arr_test8.length / 2;
 
-        long start4 = System.currentTimeMillis(); // Get Time
+
 
         mid = arr_test.length / 2;
         arr41 = Arrays.copyOfRange(arr_test4, 0, (mid / 2));
@@ -321,6 +337,7 @@ public class PMergeSortCombined {
         arr43 = Arrays.copyOfRange(arr_test4, mid, (val - (mid / 2)));
         arr44 = Arrays.copyOfRange(arr_test4, (val - (mid / 2)), val);
 
+        long start4 = System.currentTimeMillis(); // Get Time
         threads = new ArrayList<>();
 
         t41.start();
@@ -349,7 +366,8 @@ public class PMergeSortCombined {
         }
 
         long end4 = System.currentTimeMillis();
-        System.out.println("4 thread run time: " + (end4 - start4));
+        long elapsed4 = end4 - start4;
+        System.out.println("4 thread run time: " + (elapsed4));
 
         // 2 threads
 
@@ -369,7 +387,7 @@ public class PMergeSortCombined {
 
         t21.start();
         t22.start();
-        while (Thread.activeCount() > 1) {
+        while (Thread.activeCount() > 2) {
         }
 
         int arr3[] = new int[val];
@@ -389,9 +407,23 @@ public class PMergeSortCombined {
         long elapsed2 = end2 - start2;
         System.out.println("Single thread run time: "+elapsed2);
 
+        //==================
+        try {
+            PrintWriter outputfile = new PrintWriter(new FileWriter("./pmergeresult.txt", true));
+            outputfile.print(elapsed8 + "\t");
+            outputfile.print(elapsed4 + "\t");
+            outputfile.print(elapsed1 + "\t");
+            outputfile.println(elapsed2);
+            outputfile.close();
+        } catch (FileNotFoundException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        //=================
+            }
+        }
 
-    }
-
+    // The end of the loops are here
     public static void mergeSort(int[] array) {
         if (array.length > 1) {
             // split array into two halves
