@@ -5,12 +5,12 @@ import java.util.concurrent.CountDownLatch;
 
 public class PMergeSort16 {
 
-    static int val = 10000000;
+    static int val = 1000;
 
     static int[] arr_test16 = new int[val];
 
-    static int[] arr16_1, arr16_2, arr16_3, arr16_4, arr12_5, arr12_6, arr12_7, arr12_8,
-            arr12_9, arr12_10, arr12_11, arr12_12, arr12_13, arr12_14, arr12_15, arr12_16 = new int[val / 16];
+    static int[] arr16_1, arr16_2, arr16_3, arr16_4, arr16_5, arr16_6, arr16_7, arr16_8,
+            arr16_9, arr16_10, arr16_11, arr16_12, arr16_13, arr16_14, arr16_15, arr16_16 = new int[val / 16];
 
 
     public static void main(String[] args) throws InterruptedException {
@@ -65,62 +65,62 @@ public class PMergeSort16 {
         });
         //
         Thread t16_5 = new Thread(() -> {
-            mergeSort(arr12_5);
+            mergeSort(arr16_5);
             latch12_5_12_6.countDown();
         });
 
         Thread t16_6 = new Thread(() -> {
-            mergeSort(arr12_6);
+            mergeSort(arr16_6);
             latch12_5_12_6.countDown();
         });
         //
         Thread t16_7 = new Thread(() -> {
-            mergeSort(arr12_7);
+            mergeSort(arr16_7);
             latch12_7_12_8.countDown();
         });
 
         Thread t16_8 = new Thread(() -> {
-            mergeSort(arr12_8);
+            mergeSort(arr16_8);
             latch12_7_12_8.countDown();
         });
         //
         Thread t16_9 = new Thread(() -> {
-            mergeSort(arr12_9);
+            mergeSort(arr16_9);
             latch12_9_12_10.countDown();
         });
 
         Thread t16_10 = new Thread(() -> {
-            mergeSort(arr12_10);
+            mergeSort(arr16_10);
             latch12_9_12_10.countDown();
         });
         //
         Thread t16_11 = new Thread(() -> {
-            mergeSort(arr12_11);
+            mergeSort(arr16_11);
             latch12_11_12_12.countDown();
         });
 
         Thread t16_12 = new Thread(() -> {
-            mergeSort(arr12_12);
+            mergeSort(arr16_12);
             latch12_11_12_12.countDown();
         });
         //
         Thread t16_13 = new Thread(() -> {
-            mergeSort(arr12_13);
+            mergeSort(arr16_13);
             latch12_13_12_14.countDown();
         });
 
         Thread t16_14 = new Thread(() -> {
-            mergeSort(arr12_14);
+            mergeSort(arr16_14);
             latch12_13_12_14.countDown();
         });
         //
         Thread t16_15 = new Thread(() -> {
-            mergeSort(arr12_15);
+            mergeSort(arr16_15);
             latch12_15_12_16.countDown();
         });
 
         Thread t16_16 = new Thread(() -> {
-            mergeSort(arr12_16);
+            mergeSort(arr16_16);
             latch12_15_12_16.countDown();
         });
 
@@ -176,7 +176,7 @@ public class PMergeSort16 {
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-            merge(arr12s3, arr12_5, arr12_6);
+            merge(arr12s3, arr16_5, arr16_6);
             latch12_5_12_6_12_7_12_8.countDown();
         });
 
@@ -186,7 +186,7 @@ public class PMergeSort16 {
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-            merge(arr12s4, arr12_7, arr12_8);
+            merge(arr12s4, arr16_7, arr16_8);
             latch12_5_12_6_12_7_12_8.countDown();
         });
 
@@ -198,7 +198,7 @@ public class PMergeSort16 {
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-            merge(arr12s5, arr12_9, arr12_10);
+            merge(arr12s5, arr16_9, arr16_10);
             latch12_9_12_10_12_11_12_12.countDown();
         });
 
@@ -208,7 +208,7 @@ public class PMergeSort16 {
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-            merge(arr12s6, arr12_11, arr12_12);
+            merge(arr12s6, arr16_11, arr16_12);
             latch12_9_12_10_12_11_12_12.countDown();
         });
 
@@ -220,7 +220,7 @@ public class PMergeSort16 {
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-            merge(arr12s7, arr12_13, arr12_14);
+            merge(arr12s7, arr16_13, arr16_14);
             latch12_13_12_14_12_15_12_16.countDown();
         });
 
@@ -230,7 +230,7 @@ public class PMergeSort16 {
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-            merge(arr12s8, arr12_15, arr12_16);
+            merge(arr12s8, arr16_15, arr16_16);
             latch12_13_12_14_12_15_12_16.countDown();
         });
 
@@ -317,17 +317,31 @@ public class PMergeSort16 {
         }
 
         int mid = arr_test16.length / 2;
+        int q = mid / 2;
+        int h = q / 2;
+        int f = h /2;
+
+
 
 //TODO CAN YOU FIX THAT PART? IT IS CONFUSING FOR ME
 //TODO FROM HERE
-        arr81 = Arrays.copyOfRange(arr_test8, 0, (mid / 4));
-        arr82 = Arrays.copyOfRange(arr_test8, (mid / 4), (mid / 2));
-        arr83 = Arrays.copyOfRange(arr_test8, (mid / 2), mid - (mid / 4));
-        arr84 = Arrays.copyOfRange(arr_test8, mid - (mid / 4), mid);
-        arr85 = Arrays.copyOfRange(arr_test8, mid, mid + (mid / 4));
-        arr86 = Arrays.copyOfRange(arr_test8, mid + (mid / 4), val - (mid / 2));
-        arr87 = Arrays.copyOfRange(arr_test8, val - (mid / 2), val - (mid / 4));
-        arr88 = Arrays.copyOfRange(arr_test8, val - (mid / 4), val);
+
+        arr16_1 = Arrays.copyOfRange(arr_test16, 0, f);
+        arr16_2 = Arrays.copyOfRange(arr_test16, f, h);
+        arr16_3 = Arrays.copyOfRange(arr_test16, h, h+f);
+        arr16_4 = Arrays.copyOfRange(arr_test16, h+f , q);
+        arr16_5 = Arrays.copyOfRange(arr_test16, q, q+f);
+        arr16_6 = Arrays.copyOfRange(arr_test16, q+f , q+h);
+        arr16_7 = Arrays.copyOfRange(arr_test16, q+h , q+h+f );
+        arr16_8 = Arrays.copyOfRange(arr_test16, q+h+f , mid);
+        arr16_9 = Arrays.copyOfRange(arr_test16, mid, mid+f);
+        arr16_10 = Arrays.copyOfRange(arr_test16, mid+f, mid+h);
+        arr16_11 = Arrays.copyOfRange(arr_test16, mid+h , mid+h+f);
+        arr16_12 = Arrays.copyOfRange(arr_test16, mid+h+f , mid+q );
+        arr16_13 = Arrays.copyOfRange(arr_test16, mid+q , mid+q+f);
+        arr16_14 = Arrays.copyOfRange(arr_test16, mid+q+f, mid+q+h);
+        arr16_15 = Arrays.copyOfRange(arr_test16, mid+q+h, mid+q+h+f);
+        arr16_16 = Arrays.copyOfRange(arr_test16, mid+q+h+f, mid+mid);
 
         //TODO TO HERE
 
