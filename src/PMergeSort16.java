@@ -5,7 +5,7 @@ import java.util.concurrent.CountDownLatch;
 
 public class PMergeSort16 {
 
-    static int val = 1000;
+    static int val = 5000000;
 
     static int[] arr_test16 = new int[val];
 
@@ -319,8 +319,7 @@ public class PMergeSort16 {
         int mid = arr_test16.length / 2;
         int q = mid / 2;
         int h = q / 2;
-        int f = h /2;
-
+        int f = h / 2;
 
 
 //TODO CAN YOU FIX THAT PART? IT IS CONFUSING FOR ME
@@ -328,20 +327,20 @@ public class PMergeSort16 {
 
         arr16_1 = Arrays.copyOfRange(arr_test16, 0, f);
         arr16_2 = Arrays.copyOfRange(arr_test16, f, h);
-        arr16_3 = Arrays.copyOfRange(arr_test16, h, h+f);
-        arr16_4 = Arrays.copyOfRange(arr_test16, h+f , q);
-        arr16_5 = Arrays.copyOfRange(arr_test16, q, q+f);
-        arr16_6 = Arrays.copyOfRange(arr_test16, q+f , q+h);
-        arr16_7 = Arrays.copyOfRange(arr_test16, q+h , q+h+f );
-        arr16_8 = Arrays.copyOfRange(arr_test16, q+h+f , mid);
-        arr16_9 = Arrays.copyOfRange(arr_test16, mid, mid+f);
-        arr16_10 = Arrays.copyOfRange(arr_test16, mid+f, mid+h);
-        arr16_11 = Arrays.copyOfRange(arr_test16, mid+h , mid+h+f);
-        arr16_12 = Arrays.copyOfRange(arr_test16, mid+h+f , mid+q );
-        arr16_13 = Arrays.copyOfRange(arr_test16, mid+q , mid+q+f);
-        arr16_14 = Arrays.copyOfRange(arr_test16, mid+q+f, mid+q+h);
-        arr16_15 = Arrays.copyOfRange(arr_test16, mid+q+h, mid+q+h+f);
-        arr16_16 = Arrays.copyOfRange(arr_test16, mid+q+h+f, mid+mid);
+        arr16_3 = Arrays.copyOfRange(arr_test16, h, h + f);
+        arr16_4 = Arrays.copyOfRange(arr_test16, h + f, q);
+        arr16_5 = Arrays.copyOfRange(arr_test16, q, q + f);
+        arr16_6 = Arrays.copyOfRange(arr_test16, q + f, q + h);
+        arr16_7 = Arrays.copyOfRange(arr_test16, q + h, q + h + f);
+        arr16_8 = Arrays.copyOfRange(arr_test16, q + h + f, mid);
+        arr16_9 = Arrays.copyOfRange(arr_test16, mid, mid + f);
+        arr16_10 = Arrays.copyOfRange(arr_test16, mid + f, mid + h);
+        arr16_11 = Arrays.copyOfRange(arr_test16, mid + h, mid + h + f);
+        arr16_12 = Arrays.copyOfRange(arr_test16, mid + h + f, mid + q);
+        arr16_13 = Arrays.copyOfRange(arr_test16, mid + q, mid + q + f);
+        arr16_14 = Arrays.copyOfRange(arr_test16, mid + q + f, mid + q + h);
+        arr16_15 = Arrays.copyOfRange(arr_test16, mid + q + h, mid + q + h + f);
+        arr16_16 = Arrays.copyOfRange(arr_test16, mid + q + h + f, mid + mid);
 
         //TODO TO HERE
 
@@ -364,7 +363,7 @@ public class PMergeSort16 {
         t16_5.start();
         threads.add(t16_5);
 
-        t16_16.start();
+        t16_6.start();
         threads.add(t16_6);
 
         t16_7.start();
@@ -396,6 +395,7 @@ public class PMergeSort16 {
 
         t16_16.start();
         threads.add(t16_16);
+
 
         t121_122.start();
         threads.add(t121_122);
