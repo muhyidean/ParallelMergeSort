@@ -424,3 +424,11 @@ Test value: 5000000
 629	613	834	1278
 579	612	852	1272
 578	650	922	1875
+Test value: 50000000
+Test value: 5000
+Test value: 5000
+Test value: 5000
+Test value: 5000
+Test value: 5000
+Test value: 5000
+Test value: 25000
